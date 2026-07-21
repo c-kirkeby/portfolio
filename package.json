@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/c-kirkeby/portfolio",
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=22.0.0",
+    "pnpm": ">=11.15.1"
   },
   "scripts": {
     "dev": "wrangler dev",
