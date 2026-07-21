@@ -1,33 +1,51 @@
 {
-  "private": true,
-  "scripts": {
-    "dev": "npm run tina-dev",
-    "build": "npm run tina-build",
-    "start": "npm run tina-start",
-    "export": "next export",
-    "lint": "next lint --fix && tsc",
-    "tina-dev": "tinacms server:start -c \"next dev\"",
-    "tina-build": "tinacms server:start -c \"next build\"",
-    "tina-start": "tinacms server:start -c \"next start\""
+  "name": "portfolio-starter",
+  "type": "module",
+  "version": "1.0.0",
+  "private": false,
+  "description": "A minimal, professional portfolio starter for Astro — TypeScript, Tailwind CSS v4, Content Collections, dark mode, and full SEO, with no unnecessary dependencies.",
+  "keywords": [
+    "astro",
+    "astro-theme",
+    "astro-template",
+    "portfolio",
+    "tailwindcss",
+    "typescript",
+    "starter"
+  ],
+  "license": "MIT",
+  "author": "Bracozs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/portfolio-starter"
   },
-  "devDependencies": {
-    "@tinacms/cli": "^0.59.0",
-    "@types/react": "^17.0.38",
-    "@typescript-eslint/eslint-plugin": "^5.10.1",
-    "@typescript-eslint/parser": "^5.10.1",
-    "eslint": "^8.7.0",
-    "eslint-config-next": "^12.0.8",
-    "eslint-config-prettier": "^8.3.0",
-    "typescript": "^4.5.5"
+  "homepage": "https://github.com/your-username/portfolio-starter",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
-    "next": "latest",
-    "next-dark-mode": "^3.0.0",
-    "prism-react-renderer": "^1.2.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "sass": "^1.49.0",
-    "styled-components": "^5.3.3",
-    "tinacms": "^0.64.2"
+    "@astrojs/sitemap": "^3.7.3",
+    "@vercel/analytics": "^2.0.1",
+    "astro": "^7.0.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.2",
+    "prettier": "^3.9.4",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.8.0",
+    "tailwindcss": "^4.3.2",
+    "typescript": "^6.0.3"
   }
 }

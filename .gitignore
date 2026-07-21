@@ -1,16 +1,26 @@
-# Node
+# build output
+dist/
+
+# generated types
+.astro/
+
+# dependencies
 node_modules/
 
-# Next.js
-.next/
-out/
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# Package manager files
-yarn-error.log
-.vercel
+# environment variables
+.env
+.env.production
 
-# Typescript files
-tsconfig.tsbuildinfo
+# macOS-specific files
+.DS_Store
 
-# TypeScript transpiled files
-*.js.map
+# editor
+.vscode/*
+!.vscode/extensions.json
+.idea/
