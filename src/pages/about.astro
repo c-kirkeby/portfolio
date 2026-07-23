@@ -8,9 +8,9 @@ const tools = ['TypeScript', 'React', 'Node.js', 'Tailwind CSS', 'Web Fundamenta
 
 <BaseLayout title="About" description={`A bit about ${SITE.name} and how they work.`}>
   <section class="mx-auto max-w-3xl px-6 pt-16 pb-24 sm:pt-24">
-    <p class="text-ink-soft mb-6 font-mono text-xs">About</p>
+    <p class="text-muted-foreground mb-6 font-mono text-xs">About</p>
 
-    <h1 class="font-display text-ink max-w-xl text-3xl font-medium sm:text-4xl">
+    <h1 class="font-display text-foreground max-w-xl text-3xl font-medium sm:text-4xl">
       {SITE.role}.
     </h1>
 
@@ -40,11 +40,11 @@ const tools = ['TypeScript', 'React', 'Node.js', 'Tailwind CSS', 'Web Fundamenta
     </div>
 
     <div class="mt-10">
-      <p class="text-ink-soft mb-3 font-mono text-xs">Tools</p>
+      <p class="text-muted-foreground mb-3 font-mono text-xs">Tools</p>
       <ul class="flex flex-wrap gap-2">
         {
           tools.map((tool) => (
-            <li class="border-line text-ink-soft rounded-md border px-3 py-1 font-mono text-xs">
+            <li class="border-border text-muted-foreground rounded-md border px-3 py-1 font-mono text-xs">
               {tool}
             </li>
           ))
