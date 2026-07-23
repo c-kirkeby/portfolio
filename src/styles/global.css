@@ -5,49 +5,84 @@
    preference, so the toggle in <ThemeToggle /> can override the system. */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* ---------------------------------------------------------------------
-   Design tokens (light values). Edit these five colors to re-skin the
-   entire site — every component reads from the tokens below, nothing
-   hardcodes a hex value.
-   --------------------------------------------------------------------- */
 :root {
   color-scheme: light;
 
-  --paper: #f7f6f3;
-  /* page background */
-  --ink: #15161b;
-  /* primary text */
-  --ink-soft: #5b5d66;
-  /* secondary text */
-  --signal: #3d3dff;
-  /* the one accent color */
-  --line: #e4e2dc;
-  /* borders, rules */
-  --surface: #efeeea;
-  /* cards, raised panels */
+  --radius: 0.625rem;
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
 }
 
 .dark {
   color-scheme: dark;
 
-  --paper: #101114;
-  --ink: #f2f1ed;
-  --ink-soft: #9a9ca6;
-  --signal: #7b7bff;
-  --line: #26272c;
-  --surface: #1a1b20;
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.145 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
 }
 
-/* `inline` keeps these resolving against the live --paper/--ink/etc custom
-   properties above at runtime, instead of Tailwind inlining a static value
-   at build time — required for the .dark class swap to work. */
+/* `inline` keeps these resolving against the live custom properties above
+   at runtime, instead of Tailwind inlining a static value at build time —
+   required for the .dark class swap to work. */
 @theme inline {
-  --color-paper: var(--paper);
-  --color-ink: var(--ink);
-  --color-ink-soft: var(--ink-soft);
-  --color-signal: var(--signal);
-  --color-line: var(--line);
-  --color-surface: var(--surface);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 
   /* Astro's Fonts API exposes the loaded families on --ff-* (see
      astro.config.mjs). These map them to font-display / font-body /
@@ -59,23 +94,23 @@
 
 @layer base {
   * {
-    border-color: var(--color-line);
+    border-color: var(--color-border);
   }
 
   body {
-    background-color: var(--color-paper);
-    color: var(--color-ink);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
   }
 
   ::selection {
-    background-color: var(--color-signal);
-    color: var(--color-paper);
+    background-color: var(--color-primary);
+    color: var(--color-primary-foreground);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-signal);
+    outline: 2px solid var(--color-ring);
     outline-offset: 3px;
   }
 
@@ -100,15 +135,15 @@
 /* Tune @tailwindcss/typography to use the site's tokens instead of its
    default gray scale, so rendered Markdown matches the rest of the page. */
 .prose {
-  --tw-prose-body: var(--color-ink-soft);
-  --tw-prose-headings: var(--color-ink);
-  --tw-prose-bold: var(--color-ink);
-  --tw-prose-links: var(--color-signal);
-  --tw-prose-bullets: var(--color-signal);
-  --tw-prose-hr: var(--color-line);
-  --tw-prose-quotes: var(--color-ink);
-  --tw-prose-quote-borders: var(--color-signal);
-  --tw-prose-code: var(--color-ink);
+  --tw-prose-body: var(--color-muted-foreground);
+  --tw-prose-headings: var(--color-foreground);
+  --tw-prose-bold: var(--color-foreground);
+  --tw-prose-links: var(--color-primary);
+  --tw-prose-bullets: var(--color-primary);
+  --tw-prose-hr: var(--color-border);
+  --tw-prose-quotes: var(--color-foreground);
+  --tw-prose-quote-borders: var(--color-primary);
+  --tw-prose-code: var(--color-foreground);
 }
 
 .prose :where(h2, h3, h4) {
