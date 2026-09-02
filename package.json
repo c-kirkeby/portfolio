@@ -21,6 +21,13 @@
     "node": ">=22.0.0",
     "pnpm": ">=11.15.1"
   },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "11.25.0",
+      "onFail": "download"
+    }
+  },
   "scripts": {
     "dev": "wrangler dev",
     "start": "wrangler dev",
